@@ -1,11 +1,9 @@
-{{ config(materialized='table') }}
-
 with companies as (
 
     select
         porte_empresa,
         capital_social
-    from {{ ref('int_empresas') }}
+    from {{ ref('empresas') }}
 
 )
 
