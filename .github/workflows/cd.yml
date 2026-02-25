@@ -1,0 +1,35 @@
+name: Databricks - CD
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Instalando Databricks CLI
+        uses: databricks/setup-cli@main
+
+      - name: Configure environment
+        run: |
+          if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
+            echo "DATABRICKS_HOST=${{ secrets.DATABRICKS_HOST_PROD }}" >> $GITHUB_ENV
+            echo "DATABRICKS_CLIENT_ID=${{ secrets.DATABRICKS_CLIENT_ID_PROD }}" >> $GITHUB_ENV
+            echo "DATABRICKS_CLIENT_SECRET=${{ secrets.DATABRICKS_CLIENT_SECRET_PROD }}" >> $GITHUB_ENV
+            echo "TARGET=prod" >> $GITHUB_ENV
+          else
+            echo "DATABRICKS_HOST=${{ secrets.DATABRICKS_HOST_DEV }}" >> $GITHUB_ENV
+            echo "DATABRICKS_CLIENT_ID=${{ secrets.DATABRICKS_CLIENT_ID_DEV }}" >> $GITHUB_ENV
+            echo "DATABRICKS_CLIENT_SECRET=${{ secrets.DATABRICKS_CLIENT_SECRET_DEV }}" >> $GITHUB_ENV
+            echo "TARGET=dev" >> $GITHUB_ENV
+          fi
+
+      - name: Deploy Databricks Bundle
+        run: databricks bundle deploy --target $TARGET

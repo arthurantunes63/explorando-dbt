@@ -1,0 +1,50 @@
+version: 2
+
+sources:
+  - name: bronze_rfpj
+
+    tables:
+      # EMPRESAS
+      - name: empresas_0
+      - name: empresas_1
+      - name: empresas_2
+      - name: empresas_3
+      - name: empresas_4
+      - name: empresas_5
+      - name: empresas_6
+      - name: empresas_7
+      - name: empresas_8
+      - name: empresas_9
+
+      # ESTABELECIMENTOS
+      - name: estabelecimentos_0
+      - name: estabelecimentos_1
+      - name: estabelecimentos_2
+      - name: estabelecimentos_3
+      - name: estabelecimentos_4
+      - name: estabelecimentos_5
+      - name: estabelecimentos_6
+      - name: estabelecimentos_7
+      - name: estabelecimentos_8
+      - name: estabelecimentos_9
+
+      # SOCIOS
+      - name: socios_0
+      - name: socios_1
+      - name: socios_2
+      - name: socios_3
+      - name: socios_4
+      - name: socios_5
+      - name: socios_6
+      - name: socios_7
+      - name: socios_8
+      - name: socios_9
+
+      # Tabelas únicas
+      - name: simples
+      - name: cnaes
+      - name: motivos
+      - name: naturezas
+      - name: municipios
+      - name: qualificacoes
+      - name: paises

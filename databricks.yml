@@ -1,0 +1,15 @@
+bundle:
+  name: explorando_dbt
+
+include:
+  - resources/*/*.yml
+
+workspace:
+  host: ${DATABRICKS_HOST}
+
+targets:
+  dev:
+    mode: development
+  
+  prod:
+    mode: production

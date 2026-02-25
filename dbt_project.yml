@@ -1,0 +1,32 @@
+name: 'explorando_dbt'
+version: '1.0'
+config-version: 2
+
+profile: 'db_profile'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  explorando_dbt:
+
+    staging:
+      +materialized: view
+      +schema: silver_rfpj
+
+    intermediate:
+      +materialized: table
+      +schema: silver_rfpj
+
+    marts:
+      +materialized: table
+      +schema: gold_rfpj
