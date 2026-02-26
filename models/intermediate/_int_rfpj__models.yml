@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: int_estabelecimentos
+    description: "Estabelecimentos enriquecidos com município e CNAE"
+
+    columns:
+      - name: cnpj_basico
+        description: "CNPJ base da empresa"
+        tests:
+          - not_null
+
+      - name: cnpj_ordem
+        description: "Número de ordem do estabelecimento"
+        tests:
+          - not_null
+
+      - name: municipio
+        description: "Código do município"
+
+      - name: cnae_fiscal_principal
+        description: "Código CNAE principal"
+    
+      - name: nome_municipio
+        description: "Nome do município derivado do join"
+
+      - name: nome_cnae
+        description: "Descrição do CNAE derivada do join"

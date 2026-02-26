@@ -1,5 +1,3 @@
-{{ config(materialized='view') }}
-
 with source as (
 
     {{ union_partitions('bronze_rfpj', 'socios', 10) }}
